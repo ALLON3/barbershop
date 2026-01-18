@@ -1,0 +1,57 @@
+Progresso mapeei os arquivos visuais chave e registrei os próximos passos. Abaixo está o mapa solicitado (conciso e acionável).
+
+Visão Geral — Onde alterar visuais e textos
+
+Cores & tokens tailwind.config.ts  index.css1
+
+O que altera paleta, gradientes, sombras, variáveis CSS (ex. --primary, --gradient-gold).
+Onde editar edite os valores dentro de root em index.css para trocar cores globais; tailwind.config.ts referencia essas variáveis (fonts, nomes de cores).
+Logo & ícone do header (página cliente) ClientView.tsx1
+
+O que altera íconebranding no canto superior (atualmente Scissors do lucide-react) e textos do cabeçalho (Barbearia, subtítulo).
+Como mudar substitua o componente Scissors  por img src=logo.png alt=logo  (coloque logo.png em public) ou altere a importação do ícone.
+Cartão do barbeiro (nome, inicialavatar, fila, ícones) BarberCard.tsx1
+
+O que altera nome exibido (barber.name), avatar inicial ({barber.name[0]}), cor de status (função getStatusColor), ícones (ex. Scissors, Users, Clock) e labels (Disponível, Atendendo).
+Como mudar editar markupstrings no arquivo; para usar imagem de avatar, trocar o bloco do avatar pela utilização do AvatarImage do componente avatar.tsx.
+Login do barbeiro (texto, ícone, cores do card) BarberLogin.tsx1
+
+O que altera título (Painel do Barbeiro), instruções, estilo do card (classes Tailwind).
+Como mudar editar os textos e classes Tailwind no JSX; ícone atual Lock pode ser trocado por imagemSVG.
+Avatar reutilizável avatar.tsx1
+
+O que altera estrutura do avatar (fallback com fundo bg-muted), permite usar imagem com AvatarImage.
+Como mudar personalizar as classes (cn(...)) para alterar tamanho, borda, fundo; alterar AvatarFallback para mostrar ícone ou letra estilizada.
+Componentes de UI (botões, inputs, cards) button.tsx, input.tsx, [srccomponentsuicard.tsx]
+
+O que altera aparência consistente de botõesinputscards em todo projeto.
+Como mudar ajuste classes e variantes nesses arquivos para alterar padding, cores e bordas globalmente — preferível para mudanças consistentes.
+Textolabels da página cliente (nomes, títulos, rodapé) ClientView.tsx1 e GeneralQueueCard.tsx
+
+O que altera títulos de seções (Barbeiros, Fila Geral), texto do rodapé (Área do Barbeiro →).
+Como mudar editar diretamente strings nesses arquivos.
+Estilos globais, fontes e utilitários index.css1 e tailwind.config.ts1
+
+O que altera fontes (PlayfairInter), utilitários .bg-gradient-gold, .text-gradient-gold, variáveis de tema darklight.
+Como mudar ajuste @import de fontes em index.css e tokens HSL em root.
+Arquivos públicos (imagens estáticas) public
+
+O que altera coloque logo.png, favicon.ico ou imagens de barbeiros em public e referencie-as por logo.png no JSXHTML.
+Dicas práticas rápidas (como editar visual sem quebrar lógica)
+
+Para trocar a cor primária global editar --primary em index.css (em root e .dark).
+Para trocar logo do header adicione publiclogo.png e em ClientView.tsx substitua o bloco que renderiza Scissors  por img src=logo.png className=w-10 h-10 .
+Para usar avatar real em vez de inicial em BarberCard.tsx substitua a div com {barber.name[0]} por
+usar AvatarImage (ex. AvatarImage src={barber.avatarUrl} ) ou
+img src=avatars{barber.id}.png alt={barber.name} className=w-12 h-12 rounded-full .
+Para alterar ícones procure por imports de lucide-react nos componentes e substitua por outro ícone (ou SVGIMG).
+Arquivos UI importantes (resumo rápido)
+
+ClientView.tsx Página principal do cliente (header, lista de barbeiros, rodapé).
+AdminPanel.tsx Painel do barbeiro (funcionalidade interna).
+BarberCard.tsx Cartão individual do barbeiro (nome, status, fila).
+GeneralQueueCard.tsx Exibe fila geral.
+BarberLogin.tsx Tela de login (UI do card).
+srccomponentsui Biblioteca local de primitives (button, input, card, avatar, toast). Edite aqui para estilo consistente.
+index.css Variáveis CSS e utilitários (cores, gradientes, sombras) — principal lugar para troca de palette.
+tailwind.config.ts Tokens de tema e fontes (mapeia variáveis para classes Tailwind).
