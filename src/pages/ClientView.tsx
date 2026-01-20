@@ -23,8 +23,35 @@ const ClientView = () => {
     return state.businessHours.find(h => h.dayOfWeek === dayOfWeek);
   };
 
+  const isBusinessHoursOpen = () => {
+    const businessHours = getCurrentBusinessHours();
+    
+    // Se o dia não está marcado como aberto ou não tem horários definidos
+    if (!businessHours?.isOpen || !businessHours?.openTime || !businessHours?.closeTime) {
+      return false;
+    }
+
+    // Verificar se a hora atual está dentro do horário de funcionamento
+    const currentHours = currentTime.getHours();
+    const currentMinutes = currentTime.getMinutes();
+    const currentTimeInMinutes = currentHours * 60 + currentMinutes;
+
+    try {
+      const [openHours, openMinutes] = businessHours.openTime.split(':').map(Number);
+      const [closeHours, closeMinutes] = businessHours.closeTime.split(':').map(Number);
+
+      const openTimeInMinutes = openHours * 60 + openMinutes;
+      const closeTimeInMinutes = closeHours * 60 + closeMinutes;
+
+      return currentTimeInMinutes >= openTimeInMinutes && currentTimeInMinutes < closeTimeInMinutes;
+    } catch (e) {
+      console.error('Erro ao processar horários:', e);
+      return false;
+    }
+  };
+
   const businessHours = getCurrentBusinessHours();
-  const isOpen = businessHours?.isOpen;
+  const isOpen = isBusinessHoursOpen();
 
   // Auto-resume barbers when store opens
   useEffect(() => {
