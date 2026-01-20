@@ -63,7 +63,7 @@ export const BarberCard = ({ barber, averageTime, estimatedWait }: BarberCardPro
   }, [barber.status.status, barber.status.pauseStartTime]);
   
   return (
-    <div className="bg-card rounded-xl p-5 shadow-card border border-border/50 transition-all hover:border-primary/30">
+    <div className="bg-black/40 backdrop-blur-xl rounded-xl p-5 shadow-card border border-white/20 transition-all hover:border-primary/30">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">

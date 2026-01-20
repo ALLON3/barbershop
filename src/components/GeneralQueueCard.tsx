@@ -7,7 +7,7 @@ interface GeneralQueueCardProps {
 
 export const GeneralQueueCard = ({ clients }: GeneralQueueCardProps) => {
   return (
-    <div className="bg-card rounded-xl p-5 shadow-card border border-primary/20">
+    <div className="bg-black/40 backdrop-blur-xl rounded-xl p-5 shadow-card border border-white/20">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
         <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
