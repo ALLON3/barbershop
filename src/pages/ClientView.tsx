@@ -211,6 +211,7 @@ const ClientView = () => {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 };
