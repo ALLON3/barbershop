@@ -73,9 +73,9 @@ const ClientView = () => {
   }, [isOpen, state.barbers, resumeWork, lastHourState]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black">
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border/50 px-4 py-4">
+      <header className="sticky top-0 z-10 bg-black/95 backdrop-blur-sm border-b border-border/50 px-4 py-4">
         <div className="max-w-lg mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
@@ -127,12 +127,12 @@ const ClientView = () => {
           <div className="bg-card rounded-xl p-5 shadow-card border border-border/50">
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="flex flex-col items-center text-center">
-                <img src="/tesouratempo.png" alt="Aguardando" className="w-12 h-12 mb-2 opacity-80" />
+                <img src="/tesouratempo.png" alt="Aguardando" className="w-7 h-7 mb-2 brightness-0 invert" />
                 <p className="text-xs text-muted-foreground mb-2">Aguardando</p>
                 <p className="text-3xl font-bold text-foreground">{state.generalQueue.clients.length}</p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <img src="/atendendoicon.png" alt="Sendo atendido" className="w-12 h-12 mb-2" />
+                <img src="/atendendoicon.png" alt="Sendo atendido" className="w-7 h-7 mb-2 brightness-0 invert" />
                 <p className="text-xs text-muted-foreground mb-2">Sendo atendidos</p>
                 <p className="text-3xl font-bold text-primary">
                   {state.barbers.filter(b => b.currentClient).length}
