@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useBarbershop } from '@/hooks/useBarbershop';
 import { BarberCard } from '@/components/BarberCard';
 import { StatsBar } from '@/components/StatsBar';
-import { Clock } from 'lucide-react';
+import { Clock, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ClientView = () => {
@@ -199,7 +199,8 @@ const ClientView = () => {
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
             >
-              📲 Instagram
+              <Instagram className="w-4 h-4" />
+              Instagram
             </a>
             <span className="text-muted-foreground">•</span>
             <Link 
