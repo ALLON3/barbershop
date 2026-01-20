@@ -73,9 +73,22 @@ const ClientView = () => {
   }, [isOpen, state.barbers, resumeWork, lastHourState]);
 
   return (
-    <div className="min-h-screen bg-black">
+    <div 
+      className="min-h-screen"
+      style={{
+        backgroundImage: 'url(/background-login.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      {/* Overlay desfocado escuro */}
+      <div className="absolute inset-0 backdrop-blur-sm bg-black/40 pointer-events-none" />
+      
+      {/* Conteúdo */}
+      <div className="relative z-10">
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-black/95 backdrop-blur-sm border-b border-border/50 px-4 py-4">
+      <header className="sticky top-0 z-10 bg-black/40 backdrop-blur-xl border-b border-border/50 px-4 py-4">
         <div className="max-w-lg mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
@@ -123,8 +136,8 @@ const ClientView = () => {
 
         {/* General Queue + Stats Combined */}
         <section className="mb-6">
-          <h2 className="font-display text-lg text-foreground mb-4">Clientes em espera</h2>
-          <div className="bg-card rounded-xl p-5 shadow-card border border-border/50">
+          <h2 className="font-display text-lg text-foreground mb-4">Fila</h2>
+          <div className="bg-black/40 backdrop-blur-xl rounded-xl p-5 shadow-card border border-white/20">
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="flex flex-col items-center text-center">
                 <img src="/tesouratempo.png" alt="Aguardando" className="w-7 h-7 mb-2 brightness-0 invert" />
@@ -177,7 +190,7 @@ const ClientView = () => {
       </main>
 
       {/* Admin Access Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border/50 px-4 py-4">
+      <footer className="fixed bottom-0 left-0 right-0 bg-black/40 backdrop-blur-xl border-t border-border/50 px-4 py-4 z-20">
         <div className="max-w-lg mx-auto space-y-3">
           <div className="flex items-center justify-center gap-4">
             <a 
