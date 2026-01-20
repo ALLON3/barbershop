@@ -123,14 +123,16 @@ const ClientView = () => {
 
         {/* General Queue + Stats Combined */}
         <section className="mb-6">
-          <h2 className="font-display text-lg text-foreground mb-4">Visão Geral</h2>
+          <h2 className="font-display text-lg text-foreground mb-4">Clientes em espera</h2>
           <div className="bg-card rounded-xl p-5 shadow-card border border-border/50">
             <div className="grid grid-cols-2 gap-4 mb-4">
-              <div>
+              <div className="flex flex-col items-center text-center">
+                <img src="/tesouratempo.png" alt="Aguardando" className="w-12 h-12 mb-2 opacity-80" />
                 <p className="text-xs text-muted-foreground mb-2">Aguardando</p>
                 <p className="text-3xl font-bold text-foreground">{state.generalQueue.clients.length}</p>
               </div>
-              <div>
+              <div className="flex flex-col items-center text-center">
+                <img src="/atendendoicon.png" alt="Sendo atendido" className="w-12 h-12 mb-2" />
                 <p className="text-xs text-muted-foreground mb-2">Sendo atendidos</p>
                 <p className="text-3xl font-bold text-primary">
                   {state.barbers.filter(b => b.currentClient).length}

@@ -133,11 +133,11 @@ const AdminPanel = () => {
                 className="w-full bg-card rounded-xl p-5 shadow-card border border-border/50 hover:border-primary/50 transition-all text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center">
-                    <span className="text-primary-foreground font-display text-2xl font-bold">
-                      {b.name[0]}
-                    </span>
-                  </div>
+                  <img 
+                    src="/barber.png" 
+                    alt={b.name}
+                    className="w-14 h-14 rounded-full object-cover"
+                  />
                   <div className="flex-1">
                     <h2 className="font-display text-xl text-foreground">{b.name}</h2>
                     <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
@@ -331,33 +331,36 @@ const AdminPanel = () => {
               <div className="flex gap-3 mb-6">
                 <button
                   onClick={() => setServiceType('haircut')}
-                  className={`flex-1 py-3 rounded-lg border transition-all ${
+                  className={`flex-1 py-3 rounded-lg border transition-all flex flex-col items-center gap-2 ${
                     serviceType === 'haircut' 
                       ? 'bg-primary text-primary-foreground border-primary' 
                       : 'bg-secondary border-border text-muted-foreground hover:border-primary/50'
                   }`}
                 >
-                  ✂️ Corte
+                  <img src="/corte.png" alt="Corte" className="w-6 h-6" />
+                  Corte
                 </button>
                 <button
                   onClick={() => setServiceType('beard')}
-                  className={`flex-1 py-3 rounded-lg border transition-all ${
+                  className={`flex-1 py-3 rounded-lg border transition-all flex flex-col items-center gap-2 ${
                     serviceType === 'beard' 
                       ? 'bg-primary text-primary-foreground border-primary' 
                       : 'bg-secondary border-border text-muted-foreground hover:border-primary/50'
                   }`}
                 >
-                  🧔 Barba
+                  <img src="/barba.png" alt="Barba" className="w-6 h-6" />
+                  Barba
                 </button>
                 <button
                   onClick={() => setServiceType('haircut-beard')}
-                  className={`flex-1 py-3 rounded-lg border transition-all ${
+                  className={`flex-1 py-3 rounded-lg border transition-all flex flex-col items-center gap-2 ${
                     serviceType === 'haircut-beard' 
                       ? 'bg-primary text-primary-foreground border-primary' 
                       : 'bg-secondary border-border text-muted-foreground hover:border-primary/50'
                   }`}
                 >
-                  ✂️🧔 Corte + Barba
+                  <img src="/corteebarba.png" alt="Corte + Barba" className="w-6 h-6" />
+                  Corte + Barba
                 </button>
               </div>
               
@@ -399,11 +402,11 @@ const AdminPanel = () => {
             <ArrowLeft className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-3 flex-1">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold">
-                {barber?.name[0]}
-              </span>
-            </div>
+            <img 
+              src="/barber.png" 
+              alt={barber?.name}
+              className="w-10 h-10 rounded-full object-cover"
+            />
             <div>
               <h1 className="font-display text-lg text-foreground">{barber?.name}</h1>
               <p className="text-xs text-muted-foreground">
