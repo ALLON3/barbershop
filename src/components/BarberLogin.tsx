@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useBarberAuth } from '@/hooks/useBarberAuth';
-import { Lock, LogIn } from 'lucide-react';
+import { LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const BarberLogin = () => {
-  const { login } = useBarberAuth();
+  const { login, loading: authLoading } = useBarberAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -17,7 +17,7 @@ export const BarberLogin = () => {
     setError('');
     setLoading(true);
 
-    const result = login(username, password);
+    const result = await login(username, password);
     
     if (!result.success) {
       setError(result.error || 'Erro ao fazer login');
@@ -29,16 +29,31 @@ export const BarberLogin = () => {
     setLoading(false);
   };
 
+  const isLoading = loading || authLoading;
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 p-4">
-      <Card className="w-full max-w-md">
+    <div 
+      className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
+      style={{
+        backgroundImage: 'url(/background-login.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      {/* Overlay desfocado escuro */}
+      <div className="absolute inset-0 backdrop-blur-sm bg-black/40" />
+      
+      {/* Conteúdo */}
+      <div className="relative z-10">
+        <Card className="w-full max-w-md bg-black/40 border-white/20 backdrop-blur-xl">
         <CardHeader className="space-y-2">
-          <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-600 mx-auto">
-            <Lock className="h-6 w-6 text-white" />
+          <div className="flex items-center justify-center mx-auto">
+            <img src="/logo.jpeg" alt="Logo Barbershop" className="h-16 w-16 rounded-full object-cover" />
           </div>
-          <CardTitle className="text-center">Painel do Barbeiro</CardTitle>
+          <CardTitle className="text-center">Barbershop Do Gui</CardTitle>
           <CardDescription className="text-center">
-            Faça login com suas credenciais
+            Painel do Barbeiro
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -50,7 +65,7 @@ export const BarberLogin = () => {
                 placeholder="Digite seu usuário"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                disabled={loading}
+                disabled={isLoading}
                 autoComplete="username"
               />
             </div>
@@ -62,7 +77,7 @@ export const BarberLogin = () => {
                 placeholder="Digite sua senha"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                disabled={loading}
+                disabled={isLoading}
                 autoComplete="current-password"
               />
             </div>
@@ -75,15 +90,16 @@ export const BarberLogin = () => {
 
             <Button
               type="submit"
-              disabled={loading || !username || !password}
+              disabled={isLoading || !username || !password}
               className="w-full"
             >
               <LogIn className="h-4 w-4 mr-2" />
-              {loading ? 'Autenticando...' : 'Entrar'}
+              {isLoading ? 'Autenticando...' : 'Entrar'}
             </Button>
           </form>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 };
