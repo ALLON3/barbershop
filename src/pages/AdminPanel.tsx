@@ -313,8 +313,8 @@ const AdminPanel = () => {
 
         {/* Add Client Modal */}
         {showAddClient && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center">
-            <div className="bg-card w-full max-w-lg rounded-t-2xl sm:rounded-2xl p-6 shadow-xl">
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-start sm:items-center justify-center pt-4 sm:pt-0 overflow-y-auto">
+            <div className="bg-card w-full max-w-lg rounded-b-2xl sm:rounded-2xl p-6 shadow-xl my-4 sm:my-0">
               <h3 className="font-display text-xl text-foreground mb-4">
                 Adicionar à Fila Geral
               </h3>
