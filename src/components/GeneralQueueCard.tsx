@@ -46,9 +46,11 @@ export const GeneralQueueCard = ({ clients }: GeneralQueueCardProps) => {
                   {idx + 1}
                 </span>
                 <span className="text-foreground truncate flex-1">{client.name}</span>
-                <span className="text-muted-foreground text-xs">
-                  {client.serviceType === 'haircut' ? '✂️' : '✂️🧔'}
-                </span>
+                <img 
+                  src={client.serviceType === 'haircut' ? '/corte.png' : client.serviceType === 'beard' ? '/barba.png' : '/corteebarba.png'} 
+                  alt={client.serviceType === 'haircut' ? 'Corte' : client.serviceType === 'beard' ? 'Barba' : 'Corte + Barba'}
+                  className="w-5 h-5"
+                />
               </div>
             ))}
             {clients.length > 5 && (

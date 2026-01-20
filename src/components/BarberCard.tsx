@@ -67,11 +67,11 @@ export const BarberCard = ({ barber, averageTime, estimatedWait }: BarberCardPro
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-display text-lg font-bold">
-              {barber.name[0]}
-            </span>
-          </div>
+          <img 
+            src="/barber.png" 
+            alt={barber.name}
+            className="w-12 h-12 rounded-full object-cover"
+          />
           <div>
             <h3 className="font-display text-xl text-foreground">{barber.name}</h3>
             <div className="flex items-center gap-2 mt-1">
