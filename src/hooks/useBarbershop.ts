@@ -54,7 +54,15 @@ const loadState = (): BarbershopState => {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      // Validate barbers - ensure we only have the correct barbers
+      const validBarberIds = ['charles', 'guilherme', 'paulo'];
+      const hasInvalidBarbers = parsed.barbers?.some((b: Barber) => !validBarberIds.includes(b.id));
+      if (hasInvalidBarbers) {
+        console.warn('Invalid barber data detected, resetting to initial state');
+        return initialState;
+      }
+      return parsed;
     }
   } catch (e) {
     console.error('Error loading state:', e);
