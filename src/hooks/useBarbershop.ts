@@ -23,7 +23,7 @@ const initialBarbers: Barber[] = [
     totalServiceTime: 0,
   },
   {
-    id: 'Paulo',
+    id: 'paulo',
     name: 'Paulo',
     queue: [],
     currentClient: null,
